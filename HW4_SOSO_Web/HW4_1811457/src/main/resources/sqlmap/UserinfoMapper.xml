@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springmvc.dao.UserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.springmvc.entity.Userinfo" >
+    <id column="EUID" property="euid" jdbcType="INTEGER" />
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    <result column="talktime" property="talktime" jdbcType="INTEGER" />
+    <result column="send" property="send" jdbcType="INTEGER" />
+    <result column="flow" property="flow" jdbcType="INTEGER" />
+    <result column="consume" property="consume" jdbcType="DOUBLE" />
+    <result column="Package" property="package" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    EUID, id, number, money, pwd, talktime, send, flow, consume, Package, createtime
+  </sql>
+  <select id="selectSelective" resultMap="BaseResultMap" parameterType="com.springmvc.entity.Userinfo">
+    select
+    <include refid="Base_Column_List" />
+    from userinfo
+    <where>
+      <if test="euid != null" >
+        EUID = #{euid,jdbcType=INTEGER}
+      </if>
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="number != null" >
+        AND number = #{number,jdbcType=VARCHAR}
+      </if>
+      <if test="money != null" >
+        AND money = #{money,jdbcType=DOUBLE}
+      </if>
+      <if test="pwd != null" >
+      AND pwd = #{pwd,jdbcType=VARCHAR}
+      </if>
+      <if test="talktime != null" >
+        AND talktime = #{talktime,jdbcType=INTEGER}
+      </if>
+      <if test="send != null" >
+        AND send = #{send,jdbcType=INTEGER}
+      </if>
+      <if test="flow != null" >
+        AND flow = #{flow,jdbcType=INTEGER}
+      </if>
+      <if test="consume != null" >
+        AND consum = #{consume,jdbcType=DOUBLE}
+      </if>
+      <if test="package != null" >
+        AND Package = #{package,jdbcType=VARCHAR}
+      </if>
+      <if test="createtime != null" >
+        AND createtime = #{createtime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where EUID = #{euid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userinfo
+    where EUID = #{euid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.springmvc.entity.Userinfo" >
+    insert into userinfo (EUID, id, number, 
+      money, pwd, talktime, 
+      send, flow, consume, 
+      Package, createtime)
+    values (#{euid,jdbcType=INTEGER}, #{id,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DOUBLE}, #{pwd,jdbcType=VARCHAR}, 0,
+      0, 0, #{money,jdbcType=DOUBLE},
+      #{package,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springmvc.entity.Userinfo" >
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="euid != null" >
+        EUID,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="pwd != null" >
+        pwd,
+      </if>
+      <if test="talktime != null" >
+        talktime,
+      </if>
+      <if test="send != null" >
+        send,
+      </if>
+      <if test="flow != null" >
+        flow,
+      </if>
+      <if test="consume != null" >
+        consume,
+      </if>
+      <if test="package != null" >
+        Package,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="euid != null" >
+        #{euid,jdbcType=INTEGER},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="talktime != null" >
+        #{talktime,jdbcType=INTEGER},
+      </if>
+      <if test="send != null" >
+        #{send,jdbcType=INTEGER},
+      </if>
+      <if test="flow != null" >
+        #{flow,jdbcType=INTEGER},
+      </if>
+      <if test="consume != null" >
+        #{consume,jdbcType=DOUBLE},
+      </if>
+      <if test="package != null" >
+        #{package,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.entity.Userinfo" >
+    update userinfo
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="pwd != null" >
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="talktime != null" >
+        talktime = #{talktime,jdbcType=INTEGER},
+      </if>
+      <if test="send != null" >
+        send = #{send,jdbcType=INTEGER},
+      </if>
+      <if test="flow != null" >
+        flow = #{flow,jdbcType=INTEGER},
+      </if>
+      <if test="consume != null" >
+        consume = #{consume,jdbcType=DOUBLE},
+      </if>
+      <if test="package != null" >
+        Package = #{package,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where EUID = #{euid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springmvc.entity.Userinfo" >
+    update userinfo
+    set id = #{id,jdbcType=VARCHAR},
+      number = #{number,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DOUBLE},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      talktime = #{talktime,jdbcType=INTEGER},
+      send = #{send,jdbcType=INTEGER},
+      flow = #{flow,jdbcType=INTEGER},
+      consume = #{consume,jdbcType=DOUBLE},
+      Package = #{package,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where EUID = #{euid,jdbcType=INTEGER}
+  </update>
+</mapper>
