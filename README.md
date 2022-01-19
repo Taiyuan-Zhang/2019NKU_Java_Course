@@ -1,6 +1,7 @@
 # 2019 NKU_Java_Course
 
 This repository recorded the assignments for 2019 Java_Course of  School of Computer Science, Nankai University.
+
 这个项目记录了南开大学计算机学院2019年《JAVA语言与应用》的课程作业。
 
 ### HW1_SOSO
