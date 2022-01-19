@@ -1,6 +1,6 @@
 # 2019 NKU_Java_Course
 
-#### This repository recorded the assignments for 2019 Java_Course of  School of Computer Science, Nankai University
+This repository recorded the assignments for 2019 Java_Course of  School of Computer Science, Nankai University.
 
 
 
